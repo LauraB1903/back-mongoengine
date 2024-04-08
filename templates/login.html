@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <form method="post" action="{{ url_for('login') }}">
+        <h1>Welcome</h1>
+        <p>Enter your credentials to continue..</p>
+
+        <div class="input-wrapper">
+            <input type="email" name="correo" required id="username" placeholder="Username">
+            <i class="bx bxs-user-circle"></i>
+        </div>
+        <div class="input-wrapper">
+            <input type="password"  name="contraseña" required id="password" placeholder="Password">
+            <i class="bx bx-key"></i>
+        </div>
+
+        <div>
+            <button type="submit">
+                Sing In
+                <i class="bx bx-right-arrow-alt"></i>
+
+            </button>
+            <p>{{mensaje}}</p>
+        </div>
+    </form>
+</body>
