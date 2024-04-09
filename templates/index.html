@@ -4,28 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}BackEnd{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/index.css">
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}"> -->
 
 </head>
 <body>
     <header>
        
-        <h1>Proyecto con MongoEngine</h1>
+        <h1>Crud MongoEngine</h1>
     </header>
-    
-    
-
     <main>
        
         {% block content %}{% endblock %}
     </main>
-    <br>
-    <br>
-
-    <footer>
-        
-        <p>ANALISIS Y DESARROLLO DE  SOFTWARE</p>
-    </footer>
 </body>
 </html>
+        
+  

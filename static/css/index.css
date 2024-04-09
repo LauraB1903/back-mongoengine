@@ -1,0 +1,18 @@
+/* Estilos para el encabezado */
+header {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    padding: 20px;
+    text-align: center;
+  }
+   /* Estilos para el cuerpo principal */
+main {
+    padding: 50px;
+  }
+  
+  /* Estilos para el título */
+h1 {
+    margin: 0;
+  }
+  
+ 
