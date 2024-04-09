@@ -11,10 +11,10 @@ app.config['MONGODB_SETTINGS'] = {
 }
 db = MongoEngine(app)
 
-from controller.productoC import *
+# Definimos el modelo de datos de Usuario
+from controller.productoC import *      
 from controller.usuarioC import *
 
-# Definimos el modelo de datos de Usuario
 
 
 if __name__ == "__main__":

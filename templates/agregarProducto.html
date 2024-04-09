@@ -88,7 +88,7 @@
           <form
             action="{{ url_for('eliminarProducto', codigo=producto.codigo) }}"
             method="post"
-            onsubmit="return confirm('¿Estás seguro de que quieres eliminar este producto de la Base de Datos?')"
+            onsubmit="return confirm('¿Deseas eliminar el producto en la base de datos?')"
           >
             <button class="botonEliminarProducto"  type="submit">Eliminar</button>
           </form>
@@ -98,7 +98,7 @@
           <form
             action="{{ url_for('editarProducto', codigo=producto.codigo) }}"
             method="GET"
-            onsubmit="return confirm('El Producto seleccionadao ya se encuentra registrado en la base de datos.¿Está seguro que desea modificarlo?')"
+            onsubmit="return confirm('El Producto ya se encuentra registrado en la base de datos.¿Deseas modificarlo?')"
           >
             <button class="botonEditarProductos"  type="submit">Editar</button>
           </form>

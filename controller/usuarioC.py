@@ -4,7 +4,7 @@ from app import app, db
 
 class Usuario(db.Document):
     usuario = db.StringField(required=True)
-    contrasenia = db.StringField(required=True)
+    contraseña = db.StringField(required=True)
 
 @app.route('/')
 def index():
@@ -14,9 +14,9 @@ def index():
 def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
-        contrasenia = request.form['contrasenia']
+        contraseña = request.form['contraseña']
       
-        user = Usuario.objects(usuario=usuario, contrasenia=contrasenia).first()
+        user = Usuario.objects(usuario=usuario, contraseña=contraseña).first()
 
         if user:
             session['usuario'] = usuario
