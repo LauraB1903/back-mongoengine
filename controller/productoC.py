@@ -9,9 +9,9 @@ class Productos(db.Document):
     categoria = db.StringField(required=True)
     foto = db.StringField(required=True)
 
-@app.route('/agregarProducto', methods=['GET', 'POST'])
+@app.route('/agregar_producto', methods=['GET', 'POST'])
 #Recibimos los datos del formulario del name
-def agregarProducto():
+def agregar_producto():
     if request.method == 'POST':
         codigo = request.form['codigo']
         nombre = request.form['nombre']
@@ -22,7 +22,7 @@ def agregarProducto():
         # Verificar si el código del producto ya existe en la base de datos
         if Productos.objects(codigo=codigo).first():
             flash('Ya existe un producto con ese código', 'error')
-            return redirect(url_for('agregarProducto'))
+            return redirect(url_for('agregar_producto'))
 
         # Si el código no existe se guarda en la base de datos
         producto = Productos(
@@ -35,45 +35,45 @@ def agregarProducto():
         producto.save() #Esta es la instruccion que guarda el producto
 
         flash('Producto agregado correctamente', 'success') #Flask  es para mostrar los mensajes desde el lado del cliente
-        return redirect(url_for('agregarProducto'))
+        return redirect(url_for('agregar_producto'))
 
     else:
         productos = Productos.objects().all()
-        return render_template('agregarProducto.html', productos=productos)
+        return render_template('agregar_producto.html', productos=productos)
     
     
 
-@app.route('/consultarProducto', methods=['GET'])
-def consultarProducto():
+@app.route('/consultar_producto', methods=['GET'])
+def consultar_producto():
     codigo = request.args.get('codigo')
     producto = Productos.objects(codigo=codigo).first()
     if producto:
-        return render_template('productoEncontrado.html', producto=producto)
+        return render_template('producto_encontrado.html', producto=producto)
     else:
         flash(f'No se encontró el producto con el código: {codigo}', 'error')
-    return redirect(url_for('productoNoEncontrado', codigo=codigo))
+    return redirect(url_for('producto_no_encontrado', codigo=codigo))
 
 
     
 #Esta funcion es para que se muestre en un documento aparte si no encontró el producto   
-@app.route('/productoNoEncontrado')    
-def productoNoEncontrado():
-    return render_template('productoNoEncontrado.html') 
+@app.route('/producto_no_encontrado')    
+def producto_no_encontrado():
+    return render_template('producto_no_encontrado.html') 
 
 #Esta funcion es para que se muestre en un documento aparte si encontró el producto   
-@app.route('/productoEncontrado')    
-def productoEncontrado():
-    return render_template('productoEncontrado.html') 
+@app.route('/producto_encontrado')    
+def producto_encontrado():
+    return render_template('producto_encontrado.html') 
 
 
    
 
-@app.route('/editarProducto/<string:codigo>', methods=['GET', 'POST'])
-def editarProducto(codigo):
+@app.route('/editar_producto/<string:codigo>', methods=['GET', 'POST'])
+def editar_producto(codigo):
     producto = Productos.objects(codigo=codigo).first()
     if not producto:
         flash('El producto no existe', 'error')
-        return redirect(url_for('agregarProducto'))
+        return redirect(url_for('agregar_producto'))
 
     if request.method == 'POST':
         nombre = request.form['nombre']
@@ -89,20 +89,20 @@ def editarProducto(codigo):
         producto.save()
 
         flash('Producto actualizado correctamente', 'success')
-        return redirect(url_for('agregarProducto'))
+        return redirect(url_for('agregar_producto'))
 
     else:
-        return render_template('editarProducto.html', producto=producto)
+        return render_template('editar_producto.html', producto=producto)
     
     
 from flask import abort
 
-@app.route('/eliminarProducto/<string:codigo>', methods=['POST'])
-def eliminarProducto(codigo):
+@app.route('/eliminar_producto/<string:codigo>', methods=['POST'])
+def eliminar_producto(codigo):
     producto = Productos.objects(codigo=codigo).first()
     
     if producto:
         producto.delete()
-        return redirect(url_for('agregarProducto'))
+        return redirect(url_for('agregar_producto'))
     else:
         abort(404, "El producto no existe")

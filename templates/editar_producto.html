@@ -1,7 +1,8 @@
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}"> -->
+<link rel="stylesheet" href="/static/css/editar_producto.css">
 <h2>Editar/Actualizar Producto</h2>
 
-<form class="form_editarProducto"   method="post" enctype="multipart/form-data">
+<form class="form_editar_producto"   method="post" enctype="multipart/form-data">
     <div class="nombre">
         <label for="nombre">Nombre:</label>
         <input class="nombre"  type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" required>
@@ -13,7 +14,7 @@
     <div class="categoria"  >
         <label for="categoria">Categoría:</label>
         <select id="categoria" name="categoria" required>
-            <option value="tecnologia" {% if producto.categoria == 'tecnologia' %} selected {% endif %}>Tecnología</option>
+            <option value="comida" {% if producto.categoria == 'comida' %} selected {% endif %}>comida</option>
             <option value="electrodomesticos" {% if producto.categoria == 'electrodomesticos' %} selected {% endif %}>Electrodomésticos</option>
             <option value="hogar" {% if producto.categoria == 'hogar' %} selected {% endif %}>Hogar</option>
         </select>
@@ -25,4 +26,4 @@
 
     <button class="botonGuardarCambios"  type="submit">Guardar Cambios</button>
     <button class="botonGuardarCambios"  type="submit">Cancelar</button>
-</form> -->
+</form>

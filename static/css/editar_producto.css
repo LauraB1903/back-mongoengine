@@ -1,0 +1,65 @@
+/* Estilos para la página de Editar/Actualizar Producto */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Color de fondo */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Color de fondo del contenedor */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form_editar_producto {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form_editar_producto label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form_editar_producto input[type="text"],
+  .form_editar_producto input[type="number"],
+  .form_editar_producto select,
+  .form_editar_producto textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  
+  .form_editar_producto button[type="submit"] {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .form_editar_producto button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .form_editar_producto .botonGuardarCambios:last-child {
+    background-color: #dc3545; /* Color de fondo del botón Cancelar */
+  }
+  
+  .form_editar_producto .botonGuardarCambios:last-child:hover {
+    background-color: #bd2130;
+  }
+  

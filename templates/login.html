@@ -27,9 +27,25 @@
           <label for="password">Contraseña:</label>
           <input type="password" id="password" name="contraseña" required placeholder="Digite su contraseña"/>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LeCeLgpAAAAAFcM4DreLUGOyx-t2tpifaBNbutO
+        "></div>ñ
+
+        </div>
+
+
+
         <button  class="botonInicioDeSesion" type="submit">Iniciar Sesión</button>
       </div>
     </form>
   </div>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script>
+    // Si reCAPTCHA todavía se está cargando, grecaptcha será indefinido.
+    grecaptcha.ready(function(){
+      grecaptcha.render("g-recaptcha", {
+        sitekey: "6LeCeLgpAAAAAFcM4DreLUGOyx-t2tpifaBNbutO"
+      });
+    });
+</script>
   {% endblock %}
   

@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="/static/css/agregarProductos.css">
+<link rel="stylesheet" href="/static/css/agregar_producto.css">
 
-
-{% extends 'index.html' %} {% block title %}Agregar Producto{% endblock %} {%
-  block content %}
+{% extends 'index.html' %}
+{% block title %}Agregar Producto{% endblock %}
+{% block content %}
   
+  <!-- Encabezado -->
   <h1>Agregar Producto</h1>
   
-  <form method="post" enctype="multipart/form-data" class="form_agregarProducto">
+  <!-- Formulario para agregar un nuevo producto -->
+  <form method="post" enctype="multipart/form-data" class="form_agregar_producto">
     <div class="codigo">
       <label for="codigo">Código:</label>
       <input
@@ -14,7 +16,7 @@
         id="codigo"
         name="codigo"
         required
-        placeholder="Ingrese el codigo del Producto"
+        placeholder="Código del Producto"
       />
     </div>
     <div class="nombre">
@@ -24,7 +26,7 @@
         id="nombre"
         name="nombre"
         required
-        placeholder="Ingrese el Nombre del Producto"
+        placeholder="Nombre del Producto"
       />
     </div>
     <div class="precio">
@@ -34,7 +36,7 @@
         id="precio"
         name="precio"
         required
-        placeholder="Ingrese el precio del Producto"
+        placeholder="Precio del Producto"
       />
     </div>
     <div class="categoria">
@@ -52,15 +54,17 @@
     </div>
     <button type="submit" class="botonAgregar">Agregar Producto</button>
   </form>
-  <!-- /////////////////////////////////////////////////////////////////////// -->
-  
-  <h2>Lista de Productos</h2>
-  
-  {% with messages = get_flashed_messages(with_categories=true) %} {% if messages
-      %} {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %}
+
+  <!-- Mensajes de alerta -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }}">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
       
+  <!-- Lista de productos existentes -->
   <table>
     <tr>
       <th>Código</th>
@@ -78,29 +82,30 @@
       <td>{{ producto.categoria }}</td>
       <td>
         <img
-          src="{{ url_for('static', filename='imagenes/' + producto.foto) }}"
+          src="{{ url_for('static', filename='/img/' + producto.foto) }}"
           alt="Foto de Producto"
         />
       </td>
   
+      <!-- Acciones: Eliminar y Editar -->
       <td>
         <div>
           <form
-            action="{{ url_for('eliminarProducto', codigo=producto.codigo) }}"
+            action="{{ url_for('eliminar_producto', codigo=producto.codigo) }}"
             method="post"
             onsubmit="return confirm('¿Deseas eliminar el producto en la base de datos?')"
           >
-            <button class="botonEliminarProducto"  type="submit">Eliminar</button>
+            <button class="botonEliminar_producto" type="submit">Eliminar</button>
           </form>
         </div>
   
         <div>
           <form
-            action="{{ url_for('editarProducto', codigo=producto.codigo) }}"
+            action="{{ url_for('editar_producto', codigo=producto.codigo) }}"
             method="GET"
-            onsubmit="return confirm('El Producto ya se encuentra registrado en la base de datos.¿Deseas modificarlo?')"
+            onsubmit="return confirm('El Producto ya se encuentra registrado en la base de datos. ¿Deseas modificarlo?')"
           >
-            <button class="botonEditarProductos"  type="submit">Editar</button>
+            <button class="botonEditar_productos" type="submit">Editar</button>
           </form>
         </div>
       </td>
@@ -108,23 +113,27 @@
     {% endfor %}
   </table>
 
-  <!-- ////////////////////////////////////////////////////////// -->
-  
-  <h2>Buscar Producto por su Codigo</h2>
-  <form action="{{ url_for('consultarProducto', codigo='') }}" method="GET">
+  <!-- Buscar producto por código -->
+  <h2>Buscar Producto por su Código</h2>
+  <form action="{{ url_for('consultar_producto', codigo='') }}" method="GET">
     <label for="codigo">Código del Producto:</label>
     <input
       type="text"
       id="codigo"
       name="codigo"
       required
-      placeholder="Ingrese el codigo del Producto"
+      placeholder="Ingrese el código del Producto"
     />
-    <button class="botonConsultar"  type="submit">Consultar</button>
+    <button class="botonConsultar" type="submit">Consultar</button>
   </form>
   
   <br />
   <br />
   
-  <a class="cerrarSesion" href="{{ url_for('logout') }}" type="submit">Cerrar Sesión </a>
-  {% endblock %}
+  <!-- Cerrar sesión -->
+  <button>
+    <a class="cerrarSesion" href="{{ url_for('logout') }}" type="submit">Cerrar Sesión</a>
+  </button>
+  
+  
+{% endblock %}

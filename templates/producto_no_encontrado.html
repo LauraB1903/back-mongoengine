@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+<link rel="stylesheet" href="/static/css/producto_no_encontrado.css">
+{% extends 'index.html' %}
 {% block title %}Producto No Encontrado{% endblock %}
 {% block content %}
 <h1>Producto No Encontrado</h1>
@@ -12,7 +13,7 @@
   {% endif %}
 {% endwith %}
 
-<form action="{{ url_for('agregarProducto') }}" method="GET">
+<form action="{{ url_for('agregar_producto') }}" method="GET">
  
 
     <button type="submit">Volver al formulario de registro</button>
